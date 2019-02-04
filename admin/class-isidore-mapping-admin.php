@@ -91,4 +91,31 @@ class Isidore_Mapping_Admin {
 
 	}
 
+
+	/**
+	 * Add Isidore Mapping posts types link & page in admin area
+	 *
+	 * @since 1.0.0
+	 */
+	function add_isidore_mapping_admin_link(){
+
+		/**
+		 * This function add the link in WP admin and enable the Isidore Mapping admin page
+		 *
+		 */
+
+		add_menu_page('Isidore mapping', 'Isidore mapping', 'manage_options', 'isidore-mapping-posts-types-list', array($this, 'isidore_admin_page') );
+
+	}
+
+
+	/**
+	 * Manage the Isidore Mapping posts types list page
+	 *
+	 * @since 1.0.0
+	 */
+	function isidore_admin_page(){
+	   include plugins_url( 'isidore-mapping/admin/partials/isidore-mapping-posts-types-list.php' );
+	}
+
 }

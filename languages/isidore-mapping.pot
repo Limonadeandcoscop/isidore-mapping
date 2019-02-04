@@ -12,3 +12,30 @@ msgstr ""
 
 msgid "Provide the ability to map pages, posts and custom types fields for Huma-Num Isidore platform"
 msgstr "Permet de mapper les champs des pages, articles et champs personalisés pour la plateforme Isidore d'Huma-Num"
+
+msgid "Isidore mapping admin page"
+msgstr "Page d'administration Isidore mapping"
+
+msgid "Creation date"
+msgstr "Date de création"
+
+msgid "Modification date"
+msgstr "Date de modification"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Permalink"
+msgstr "Permalien"
+
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Excerpt"
+msgstr "Extrait"
