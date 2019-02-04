@@ -47,7 +47,7 @@ function uninstall_isidore_mapping() {
 	Isidore_Mapping_Uninstallator::uninstall();
 }
 
-register_activation_hook( __FILE__, 'uninstall_isidore_mapping' );
+register_uninstall_hook( __FILE__, 'uninstall_isidore_mapping' );
 
 /**
  * The core plugin class that is used to define internationalization,

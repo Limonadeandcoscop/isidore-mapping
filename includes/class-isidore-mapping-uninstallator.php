@@ -22,15 +22,8 @@ class Isidore_Mapping_Uninstallator {
 	public static function uninstall() {
 
 		global $wpdb;
-
 		$table_name = $wpdb->prefix . "isidore_mapping"; 
-
-		if ( $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" ) == $table_name ) {
-
-			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-			dbDelta( "DROP TABLE ".$table_name );
-		}
-		
+	    $sql = "DROP TABLE IF EXISTS $table_name;";
+    	$wpdb->query($sql);
 	}
-
 }
