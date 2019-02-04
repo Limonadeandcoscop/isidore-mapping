@@ -27,6 +27,27 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-isidore-mapping-activator.php
+ */
+function activate_isidore_mapping() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-isidore-mapping-activator.php';
+	Isidore_Mapping_Activator::activate();
+}
+
+register_activation_hook( __FILE__, 'activate_isidore_mapping' );
+
+/**
+ * The code that runs during plugin uninstallation.
+ * This action is documented in includes/class-isidore-mapping-uninstallator.php
+ */
+function uninstall_isidore_mapping() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-isidore-mapping-uninstallator.php';
+	Isidore_Mapping_Uninstallator::uninstall();
+}
+
+register_activation_hook( __FILE__, 'uninstall_isidore_mapping' );
 
 /**
  * The core plugin class that is used to define internationalization,
