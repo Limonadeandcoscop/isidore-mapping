@@ -1,0 +1,14 @@
+# Copyright (C) 2018 Limonade&Co
+# This file is distributed under the same license as the Isidore Mapping package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Isidore Mapping 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/\n"
+"POT-Creation-Date: 2011-11-10 22:15:18+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+
+msgid "Provide the ability to map pages, posts and custom types fields for Huma-Num Isidore platform"
+msgstr "Permet de mapper les champs des pages, articles et champs personalisés pour la plateforme Isidore d'Huma-Num"
