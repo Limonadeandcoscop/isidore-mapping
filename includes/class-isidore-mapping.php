@@ -216,14 +216,16 @@ class Isidore_Mapping {
 	 */
 	private function load_available_fields() {
 
-		$site_infos_fields 	 =  ['site_title'	=> 'Site title',
+		$site_infos_fields 	 =  ['_label' => 'General site informations',
+								'site_title'	=> 'Site title',
 								'tagline'		=> 'Tagline',
 								'site_url'		=> 'Site Address (URL)',
 								'admin_email'	=> 'Administrator e-mail',
 								'site_language'	=> 'Site Language',
 								];
 
-		$native_posts_fields = ['post_author' 	=> 'Author',
+		$posts_posts_fields = 	['_label' => 'Posts',
+								'post_author' 	=> 'Author',
 								'post_date' 	=> 'Creation date', 
 								'post_modified' => 'Modification date', 
 								'post_content' 	=> 'Content', 
@@ -234,14 +236,12 @@ class Isidore_Mapping {
 								'permalink' 	=> 'Permalink' 
 								];
 
+		$page_posts_fields  = $posts_posts_fields;
+		$page_posts_fields['_label'] = "Pages";
+
 		$fields['site'] = $site_infos_fields;
-		$fields['site']['_label'] = 'General site informations';
-
-		$fields['post'] = $native_posts_fields;
-		$fields['post']['_label'] = 'Posts';
-
-		$fields['page'] = $native_posts_fields;
-		$fields['page']['_label'] = 'Pages';
+		$fields['post'] = $posts_posts_fields;
+		$fields['page'] = $page_posts_fields;
 
 		$this->fields = $fields;
 	}
