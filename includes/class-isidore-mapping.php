@@ -18,6 +18,11 @@
 class Isidore_Mapping {
 
 	/**
+	 * Multidimensionnal array containing available fields
+	 */
+	private $fields = array();
+
+	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
@@ -66,6 +71,7 @@ class Isidore_Mapping {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->load_available_fields();
 
 	}
 
@@ -201,6 +207,59 @@ class Isidore_Mapping {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	/**
+	 * Fill available fields array
+	 *
+	 * @since  1.0.0
+	 */
+	private function load_available_fields() {
+
+		$site_infos_fields 	 =  ['site_title'	=> 'Site title',
+								'tagline'		=> 'Tagline',
+								'site_url'		=> 'Site Address (URL)',
+								'admin_email'	=> 'Administrator e-mail',
+								'site_language'	=> 'Site Language',
+								];
+
+		$native_posts_fields = ['post_author' 	=> 'Author',
+								'post_date' 	=> 'Creation date', 
+								'post_modified' => 'Modification date', 
+								'post_content' 	=> 'Content', 
+								'post_title' 	=> 'Title', 
+								'post_excerpt' 	=> 'Excerpt', 
+								'post_type' 	=> 'Type', 
+								'post_status' 	=> 'Status', 
+								'permalink' 	=> 'Permalink' 
+								];
+
+		$fields['site'] = $site_infos_fields;
+		$fields['site']['_label'] = 'General site informations';
+
+		$fields['post'] = $native_posts_fields;
+		$fields['post']['_label'] = 'Posts';
+
+		$fields['page'] = $native_posts_fields;
+		$fields['page']['_label'] = 'Pages';
+
+		$this->fields = $fields;
+	}
+
+	/**
+	 * Returns available fields array
+	 *
+	 * @since  1.0.0
+	 * @param string $post_type the post type
+	 * @return array    An array containing available fields
+	 */
+	public function get_available_fields($post_type = null) {
+
+		if (!$post_type) return $this->fields;
+
+		$fields['site'] 	= $this->fields['site'];
+		$fields[$post_type] = $this->fields[$post_type];
+		return $fields;
 	}
 
 }
