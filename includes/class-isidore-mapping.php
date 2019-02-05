@@ -262,4 +262,26 @@ class Isidore_Mapping {
 		return $fields;
 	}
 
+
+	public function get_metas() {
+
+		$vocabs['dcterms'] = ['title' 		=> 'Title',
+							'subject' 		=> 'Subject',
+							'description' 	=> 'Description',
+							'source' 		=> 'Source',
+							'language' 		=> 'Language',
+							'relation' 		=> 'Relation',
+							'coverage' 		=> 'Coverage',
+							'creator' 		=> 'Creator',
+							'contributor' 	=> 'Contributor',
+							'publisher' 	=> 'Publisher',
+							'rights' 		=> 'Rights',
+							'date' 			=> 'Date',
+							'type' 			=> 'Type',
+							'format' 		=> 'Format',
+							'identifier' 	=> 'Identifier'
+							];
+		return $vocabs;
+	}
+
 }

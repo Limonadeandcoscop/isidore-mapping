@@ -115,7 +115,12 @@ class Isidore_Mapping_Admin {
 	 * @since 1.0.0
 	 */
 	function isidore_admin_page(){
-	   include plugins_url( 'isidore-mapping/admin/partials/isidore-mapping-posts-types-list.php' );
+
+		// Save mapping value
+		if (is_array($_POST) && isset($_POST['post_type']) ) {
+			print_r($_POST);
+		}
+		include plugins_url( 'isidore-mapping/admin/partials/isidore-mapping-posts-types-list.php' );
 	}
 
 
