@@ -216,24 +216,24 @@ class Isidore_Mapping {
 	 */
 	private function load_available_fields() {
 
-		$site_infos_fields 	 =  ['_label' => 'General site informations',
+		$site_infos_fields 	 =  ['_label' 		=> 'General site informations',
 								'site_title'	=> 'Site title',
 								'tagline'		=> 'Tagline',
 								'site_url'		=> 'Site Address (URL)',
 								'admin_email'	=> 'Administrator e-mail',
-								'site_language'	=> 'Site Language',
+								'site_language'	=> 'Site Language'
 								];
 
-		$posts_posts_fields = 	['_label' => 'Posts',
+		$posts_posts_fields = 	['_label' 		=> 'Posts',
 								'post_author' 	=> 'Author',
-								'post_date' 	=> 'Creation date', 
-								'post_modified' => 'Modification date', 
-								'post_content' 	=> 'Content', 
-								'post_title' 	=> 'Title', 
-								'post_excerpt' 	=> 'Excerpt', 
-								'post_type' 	=> 'Type', 
-								'post_status' 	=> 'Status', 
-								'permalink' 	=> 'Permalink' 
+								'post_date' 	=> 'Creation date',
+								'post_modified' => 'Modification date',
+								'post_content' 	=> 'Content',
+								'post_title' 	=> 'Title',
+								'post_excerpt' 	=> 'Excerpt',
+								'post_type' 	=> 'Type',
+								'post_status' 	=> 'Status',
+								'permalink' 	=> 'Permalink'
 								];
 
 		$page_posts_fields  = $posts_posts_fields;
@@ -262,26 +262,64 @@ class Isidore_Mapping {
 		return $fields;
 	}
 
-
+	/**
+	 * Returns metas
+	 *
+	 * @since  1.0.0
+	 * @return array    An array containing metas
+	 */
 	public function get_metas() {
 
-		$vocabs['dcterms'] = ['title' 		=> 'Title',
-							'subject' 		=> 'Subject',
-							'description' 	=> 'Description',
-							'source' 		=> 'Source',
-							'language' 		=> 'Language',
-							'relation' 		=> 'Relation',
-							'coverage' 		=> 'Coverage',
-							'creator' 		=> 'Creator',
-							'contributor' 	=> 'Contributor',
-							'publisher' 	=> 'Publisher',
-							'rights' 		=> 'Rights',
-							'date' 			=> 'Date',
-							'type' 			=> 'Type',
-							'format' 		=> 'Format',
-							'identifier' 	=> 'Identifier'
+		$vocabs['dcterms'] = ['title' 		=> ['label' => 'Title'],
+							'subject' 		=> ['label' => 'Subject'],
+							'description' 	=> ['label' => 'Description'],
+							'source' 		=> ['label' => 'Source'],
+							'language' 		=> ['label' => 'Language'],
+							'relation' 		=> ['label' => 'Relation'],
+							'coverage' 		=> ['label' => 'Coverage'],
+							'creator' 		=> ['label' => 'Creator'],
+							'contributor' 	=> ['label' => 'Contributor'],
+							'publisher' 	=> ['label' => 'Publisher'],
+							'rights' 		=> ['label' => 'Rights'],
+							'date' 			=> ['label' => 'Date'],
+							'type' 			=> ['label' => 'Type'],
+							'format' 		=> ['label' => 'Format'],
+							'identifier' 	=> ['label' => 'Identifier']
 							];
 		return $vocabs;
+	}
+
+	/**
+	 * Returns available fields filled with mapping metas
+	 *
+	 * @since  1.0.0
+	 * @param string $post_type the post type
+	 * @return array    An array containing available fields with metas
+	 */
+	public function get_mapping($post_type = null) {
+
+		$metas = $this->get_metas();
+
+		$fields = $this->get_available_fields($post_type);
+
+		global $wpdb;
+		$sql = "SELECT mapping FROM " . $wpdb->prefix . "isidore_mapping WHERE post_type = '".$post_type."'";
+		$results = $wpdb->get_results( $sql );
+
+		$mapping = unserialize($results[0]->mapping);
+
+		foreach( $metas as $vocabulary => $fields ) {
+			foreach( $fields as $key => $field ) {
+				$select_name = $vocabulary . '_' . $key;
+				if( !empty( $mapping[$select_name] ) ) {
+					$metas[$vocabulary][$key]['checked'] = $mapping[$select_name];
+				}
+
+
+			}
+		}
+
+		return $metas;
 	}
 
 }

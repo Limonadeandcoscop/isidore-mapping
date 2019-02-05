@@ -118,7 +118,22 @@ class Isidore_Mapping_Admin {
 
 		// Save mapping value
 		if (is_array($_POST) && isset($_POST['post_type']) ) {
-			print_r($_POST);
+
+			$post_type = $_POST['post_type'];
+			unset($_POST['post_type']);
+
+			global $wpdb;
+			$table_name = $wpdb->prefix . 'isidore_mapping';
+
+			$wpdb->delete( $table_name, array( 'post_type' => $post_type ) );
+			$wpdb->insert(
+				$table_name,
+				array(
+					'post_type' => $post_type,
+					'mapping' => serialize($_POST)
+				)
+			);
+
 		}
 		include plugins_url( 'isidore-mapping/admin/partials/isidore-mapping-posts-types-list.php' );
 	}
