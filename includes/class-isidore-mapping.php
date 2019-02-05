@@ -145,7 +145,7 @@ class Isidore_Mapping {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_isidore_mapping_admin_link' );
-		// $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_isidore_mapping_detail_page' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_isidore_mapping_detail_page' );
 	}
 
 	/**

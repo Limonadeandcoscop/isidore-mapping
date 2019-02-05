@@ -118,4 +118,28 @@ class Isidore_Mapping_Admin {
 	   include plugins_url( 'isidore-mapping/admin/partials/isidore-mapping-posts-types-list.php' );
 	}
 
+
+	/**
+	 * Add Isidore Mapping post type detail page in admin area
+	 *
+	 * @since 1.0.0
+	 */
+	function add_isidore_mapping_detail_page(){
+
+	add_submenu_page(null, 'Isidore mapping detail','Isidore mapping detail', 'manage_options', 'isidore-mapping-post-type-detail', array($this, 'isidore_admin_detail_page') );
+
+	}
+
+	/**
+	 * Manage the Isidore Mapping type detail page in admin area
+	 *
+	 * @since 1.0.0
+	 */
+	function isidore_admin_detail_page(){
+
+		$url = 'isidore-mapping/admin/partials/isidore-mapping-post-type-detail.php';
+		if (isset($_GET['post_type'])) $url .= "?post_type=" . $_GET['post_type'];
+		include plugins_url( $url );
+	}
+
 }
