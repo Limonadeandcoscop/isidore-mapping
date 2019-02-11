@@ -1,1 +1,44 @@
+#isidore_mapping_debug_infos {
+	border:1px solid #000;
+	width:100%;
+	z-index:100;
+	position:relative;
+	float:left;
+	background:white;
+	padding:20px 10px 10px;
+	margin-bottom:100px;
+}
 
+#isidore_mapping_debug_infos .logo {
+	width:151px;
+	float:left;
+	padding:15px;
+	background:white;
+	padding-bottom:6px;
+}
+
+#isidore_mapping_debug_infos .metas {
+	float:left;
+	margin-left:20px;
+	width: 60%;
+}
+
+#isidore_mapping_debug_infos .metas td:first-child {
+	width:150px;
+	font-weight: bold;
+	text-align: right;
+	color:#009fe3;
+}
+
+#isidore_mapping_debug_infos .metas td {
+	border:1px solid #999;
+	padding:5px;
+	word-break:break-all;
+	font-size:.9em;
+	font-family: monospace;
+}
+
+#isidore_mapping_debug_infos .metas > div {
+	color:black;
+	border:1px solid red;
+}

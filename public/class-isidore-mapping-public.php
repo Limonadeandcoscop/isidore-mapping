@@ -91,4 +91,16 @@ class Isidore_Mapping_Public {
 		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-public.js', array( 'jquery' ), $this->version, false );
 	}
 
+	/**
+	 * Display debug panel on frontoffice
+	 *
+	 * @since 1.0.0
+	 */
+	public function isidore_mapping_display_debug_infos() {
+
+		$url = 'isidore-mapping/public/partials/isidore-mapping-debug-panel.php';
+		include plugins_url( $url );
+	}
+
+
 }
