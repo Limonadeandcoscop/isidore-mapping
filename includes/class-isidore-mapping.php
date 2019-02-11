@@ -152,6 +152,7 @@ class Isidore_Mapping {
 		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_isidore_mapping_admin_link' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_isidore_mapping_detail_page' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'isidore_mapping_register_settings' );
 	}
 
 	/**
@@ -167,7 +168,11 @@ class Isidore_Mapping {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'wp_head', $plugin_public, 'isidore_mapping_display_debug_infos' );
+
+		// Display debug panel on frontoffice
+		if( get_option('isidore_mapping_display_panel') ) {
+			$this->loader->add_action( 'wp_head', $plugin_public, 'isidore_mapping_display_debug_infos' );
+		}
 	}
 
 	/**

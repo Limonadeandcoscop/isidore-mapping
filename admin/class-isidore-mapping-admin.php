@@ -135,6 +135,11 @@ class Isidore_Mapping_Admin {
 			);
 
 		}
+
+		if (isset($_POST['display_panel'])) {
+			update_option('isidore_mapping_display_panel', $_POST['display_panel']);
+		}
+
 		include plugins_url( 'isidore-mapping/admin/partials/isidore-mapping-posts-types-list.php' );
 	}
 
@@ -162,4 +167,15 @@ class Isidore_Mapping_Admin {
 		include plugins_url( $url );
 	}
 
+
+	/**
+	 * Register plugin options values
+	 *
+	 * @since 1.0.0
+	 */
+	function isidore_mapping_register_settings() {
+
+		add_option( 'isidore_mapping_display_panel', 0 );
+		register_setting( 'isidore_mapping_options_group', 'isidore_mapping_display_panel' );
+	}
 }
